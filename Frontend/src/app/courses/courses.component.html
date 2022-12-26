@@ -1,0 +1,72 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container-fluid">
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <div class="navbar-nav">
+        <a
+          style="font-size: 24px !important"
+          class="nav-link"
+          aria-current="page"
+          href="appstudent"
+          >Students</a
+        >
+        <a
+          style="font-size: 24px !important"
+          class="nav-link active"
+          aria-current="page"
+          href="appcourses"
+          >Courses</a
+        >
+        <a
+          style="font-size: 24px !important"
+          class="nav-link"
+          aria-current="page"
+          href="appaddcourse"
+          >Add Courses</a
+        >
+      </div>
+    </div>
+  </div>
+</nav>
+<div class="container">
+  <h2>Student's Courses List</h2>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let course of selectedStudent.courses">
+        <td>{{ course.id }}</td>
+        <td>{{ course.name }}</td>
+      </tr>
+    </tbody>
+  </table>
+  <h2>Course List</h2>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let course of courses">
+        <td>{{ course.id }}</td>
+        <td>{{ course.name }}</td>
+        <td>
+          <button
+            style="width: 100px"
+            class="btn btn-default"
+            type="button"
+            (click)="joinCourse(course.id)"
+          >
+            Join
+          </button>
+        </td>
+      </tr>
+    </tbody>
+     
+  </table>
+</div>

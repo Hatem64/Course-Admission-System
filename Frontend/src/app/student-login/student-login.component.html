@@ -1,0 +1,67 @@
+<head>
+  <meta name="viewport" />
+</head>
+<body>
+  <div class="container col-md-6">
+    <div class="form-box">
+      <form #studentloginform="ngForm" (ngSubmit)="SignInStudent()">
+        <small class="text-danger">{{ msg }}</small>
+
+        <div class="form-group">
+          <h1 style="color: #090808"><b>Login</b></h1>
+          <label for="email"><b>Email:</b> </label>
+          <input
+            type="email"
+            class="form-control"
+            id="email"
+            name="email"
+            [(ngModel)]="newStudent.email"
+            required
+            #email="ngModel"
+            [class.is-invalid]="email.invalid && email.touched"
+          />
+          <small
+            class="text-danger"
+            [class.d-none]="email.valid || email.untouched"
+            >Email feild is required</small
+          >
+        </div>
+
+        <div class="form-group">
+          <label for="pwd"><b>Password:</b></label>
+          <input
+            type="password"
+            class="form-control"
+            id="password"
+            name="password"
+            [(ngModel)]="newStudent.password"
+            required
+            #password="ngModel"
+            [class.is-invalid]="password.invalid && password.touched"
+          />
+          <small
+            class="text-danger"
+            [class.d-none]="password.valid || password.untouched"
+            >password field is required</small
+          >
+        </div>
+        <br />
+        <button
+          [disabled]="studentloginform.form.invalid"
+          style="margin-left: 50%; transform: translateX(-50%)"
+          type="submit"
+          class="btn btn-default"
+        >
+          Login
+        </button>
+        <button
+          (click)="NewAccount()"
+          style="margin-left: 50%; transform: translateX(-50%)"
+          class="btn btn-default"
+        >
+          Sign-up
+        </button>
+      </form>
+    </div>
+  </div>
+</body>

@@ -1,0 +1,107 @@
+<head>
+  <meta name="viewport" />
+</head>
+<body>
+  <div class="container col-md-6">
+    <div class="backg"></div>
+    <div class="form-box">
+      <form #studentsignupform="ngForm" (ngSubmit)="SignUpStudent()">
+        <small class="text-danger">{{ msg }}</small>
+        <div class="form-group">
+          <h1 style="color: #090909"><b>Signup</b></h1>
+          <label for="name"><b>Name:</b></label>
+          <input
+            type="name"
+            class="form-control"
+            id="name"
+            name="name"
+            [(ngModel)]="student.name"
+            required
+            #name="ngModel"
+          />
+          <small
+            class="text-danger"
+            [class.d-none]="name.valid || name.untouched"
+            >Name feild is required</small
+          >
+        </div>
+
+        <div class="form-group">
+          <label for="email"><b>Email:</b></label>
+          <input
+            type="email"
+            class="form-control"
+            id="email"
+            name="email"
+            [(ngModel)]="student.email"
+            required
+            #email="ngModel"
+          />
+          <small
+            class="text-danger"
+            [class.d-none]="email.valid || email.untouched"
+            >Email feild is required</small
+          >
+        </div>
+
+        <div class="form-group">
+          <label for="pwd"><b>Password:</b></label>
+          <input
+            type="password"
+            class="form-control"
+            id="password"
+            name="password"
+            [(ngModel)]="student.password"
+            required
+            #password="ngModel"
+            [class.is-invalid]="password.invalid && password.touched"
+          />
+          <small
+            class="text-danger"
+            [class.d-none]="password.valid || password.untouched"
+            >password field is required</small
+          >
+        </div>
+
+        <br />
+        <div class="form-group">
+          <label for="pwd"><b>Confirm password:</b></label>
+          <input
+            type="password"
+            class="form-control"
+            id="password"
+            name="cpassword"
+            [(ngModel)]="student.password"
+            required
+            #cpassword="ngModel"
+            [class.is-invalid]="cpassword.invalid && cpassword.touched"
+          />
+          <small
+            class="text-danger"
+            [class.d-none]="
+              cpassword.value == password.value || cpassword.untouched
+            "
+            >password and confirm password must be same</small
+          >
+        </div>
+        <br />
+
+        <button
+          [disabled]="studentsignupform.form.invalid"
+          style="margin-left: 50%; transform: translateX(-50%)"
+          type="submit"
+          class="btn btn-default"
+        >
+          Sign-up
+        </button>
+        <button
+          [routerLink]="['/studentlogin']"
+          style="margin-left: 50%; transform: translateX(-50%)"
+          class="btn btn-default"
+        >
+          Login
+        </button>
+      </form>
+    </div>
+  </div>
+</body>
